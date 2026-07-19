@@ -51,3 +51,7 @@ node render-app-prototype.mjs
 ```
 
 当前仓库是 Hackathon 产品原型，不包含正式生产后端、账号系统或真实硬件固件。
+
+## 联系我们
+
+[founder@weiproduct.com](mailto:founder@weiproduct.com)

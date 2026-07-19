@@ -1,0 +1,20 @@
+{
+  "source_mockup": "/Users/mac/Documents/Hackathon/ilink-ui-directions-preview.png",
+  "source_plan": "/Users/mac/Documents/Hackathon/ilink-product-ui-directions.md",
+  "mode": "evolve",
+  "html_file": "/Users/mac/Documents/Hackathon/ilink-app-prototype.html",
+  "pretext_tier": "card-grid",
+  "framework": "vanilla",
+  "iterations": 8,
+  "date": "2026-07-18T13:39:28-07:00",
+  "screen": "ilink-mobile-app",
+  "features": [
+    "voice-agent-intent-routing",
+    "daily-organization-confirmation",
+    "family-sharing-direction-tabs",
+    "hardware-family-privacy-management",
+    "three-tab-relationship-loop",
+    "weekly-monthly-family-attention-summary"
+  ],
+  "branch": "main"
+}

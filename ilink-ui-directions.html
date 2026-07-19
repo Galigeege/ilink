@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ilink UI Directions</title>
+  <style>
+    *{box-sizing:border-box} :root{color-scheme:light;--board:#f2f1ed;--ink:#171714;--muted:#6d6c66}
+    html{scroll-behavior:smooth} body{margin:0;background:var(--board);color:var(--ink);font-family:"Avenir Next","Noto Sans SC","PingFang SC",sans-serif}
+    button{font:inherit} .board{max-width:1500px;margin:auto;padding:54px 34px 80px}
+    .hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(290px,.6fr);gap:42px;align-items:end;margin-bottom:32px}
+    .kicker{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#756e62;margin-bottom:13px}
+    h1{font-family:Georgia,"Noto Serif SC",serif;font-size:clamp(42px,5vw,76px);line-height:.98;letter-spacing:-.045em;margin:0 0 18px;max-width:900px}
+    .hero p{font-size:17px;line-height:1.7;color:#5e5b54;max-width:760px;margin:0}
+    .brief{border-left:1px solid #c7c3ba;padding-left:22px;font-size:14px;line-height:1.65;color:#68645d}
+    .brief strong{display:block;color:#25231f;margin-bottom:5px}
+    .toolbar{position:sticky;top:12px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 12px 10px 18px;border:1px solid rgba(75,70,60,.13);background:rgba(247,246,242,.88);backdrop-filter:blur(18px);border-radius:16px;box-shadow:0 10px 30px rgba(40,38,32,.08);margin:30px 0}
+    .toolbar-copy{font-size:13px;color:#5c5952}.toolbar-copy b{color:#201f1b}
+    .tabs{display:flex;gap:4px;background:#e8e5de;padding:4px;border-radius:11px}
+    .tab{border:0;background:transparent;color:#656159;padding:9px 16px;border-radius:8px;cursor:pointer;font-weight:700;font-size:13px;transition:.2s}
+    .tab.active{background:#fff;color:#1e1d19;box-shadow:0 2px 8px rgba(30,28,22,.08)}
+    .directions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
+    .direction{border:1px solid rgba(55,50,43,.12);border-radius:26px;padding:24px 20px 26px;background:#faf9f6;min-width:0}
+    .direction-head{min-height:144px;padding:2px 2px 19px}
+    .dir-label{font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#8c877d}
+    .direction h2{font-size:25px;letter-spacing:-.035em;margin:9px 0 7px}.direction-head p{font-size:13px;line-height:1.55;color:#716d64;margin:0;max-width:370px}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}.tags span{font-size:10px;font-weight:800;padding:5px 8px;border-radius:99px;background:#eeece6;color:#656057}
+    .phone{position:relative;width:100%;max-width:390px;aspect-ratio:390/800;margin:auto;border:8px solid #171715;border-radius:46px;overflow:hidden;background:var(--surface);color:var(--text);box-shadow:0 27px 55px rgba(31,28,22,.20),0 5px 12px rgba(31,28,22,.14)}
+    .phone:before{content:"";position:absolute;z-index:5;top:8px;left:50%;transform:translateX(-50%);width:94px;height:23px;border-radius:20px;background:#171715}
+    .status{height:46px;padding:14px 20px 0;display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:800;position:relative;z-index:4}
+    .signal{letter-spacing:1px}.app{height:calc(100% - 46px);position:relative;overflow:hidden}.screen{display:none;height:100%;padding:11px 18px 74px;overflow:hidden}.screen.active{display:block}
+    .app-title{display:flex;align-items:center;justify-content:space-between;margin:0 0 15px}.app-title small{display:block;color:var(--sub);font-size:10px;margin-bottom:3px}.app-title h3{font-size:22px;line-height:1.1;letter-spacing:-.04em;margin:0}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);font-size:11px;font-weight:900}
+    .capture{border:0;width:100%;display:flex;align-items:center;gap:11px;padding:13px 14px;background:var(--accent);color:var(--onAccent);border-radius:15px;box-shadow:var(--buttonShadow);text-align:left}
+    .capture-icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18);font-size:15px}.capture b{font-size:13px;display:block}.capture small{font-size:9px;opacity:.78}
+    .section-row{display:flex;justify-content:space-between;align-items:center;margin:16px 1px 9px}.section-row b{font-size:11px}.section-row span{font-size:9px;color:var(--sub)}
+    .bottom-nav{position:absolute;left:10px;right:10px;bottom:8px;height:55px;z-index:5;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;background:var(--nav);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 22px rgba(0,0,0,.08)}
+    .nav-item{text-align:center;font-size:8px;color:var(--sub)}.nav-item i{display:block;margin:auto auto 3px;width:17px;height:17px;border:1.7px solid currentColor;border-radius:5px}.nav-item.active{color:var(--accent);font-weight:900}.nav-item.active i{background:var(--accent);border-color:var(--accent);box-shadow:inset 0 0 0 4px var(--nav)}
+    .screen-title{font-size:23px;line-height:1.12;letter-spacing:-.04em;margin:0 0 7px}.screen-sub{font-size:10px;color:var(--sub);line-height:1.5;margin:0 0 13px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.pill{display:inline-flex;gap:5px;align-items:center;font-size:8px;font-weight:800;padding:5px 8px;border-radius:999px;background:var(--soft);color:var(--accent)}
+    .privacy{display:flex;align-items:center;gap:6px;color:var(--sub);font-size:8px;margin:10px 2px}.privacy:before{content:"";width:6px;height:7px;border:1.3px solid currentColor;border-radius:2px}
+    .action-row{display:flex;gap:7px;margin-top:11px}.small-btn{flex:1;border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 7px;border-radius:10px;font-size:8px;font-weight:800}.small-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--onAccent)}
+    .a{--surface:#fbf3e7;--text:#2c2925;--sub:#847b70;--card:#fffaf2;--line:#e7dac8;--accent:#b55243;--onAccent:#fff8ee;--soft:#f4ded5;--nav:rgba(255,250,242,.96);--radius:14px;--buttonShadow:0 9px 20px rgba(181,82,67,.19)}
+    .a .phone{font-family:"Avenir Next","Noto Sans SC",sans-serif}.a .app-title h3,.a .screen-title,.a .letter-title{font-family:Georgia,"Noto Serif SC",serif;font-weight:500}.a .day-note{font-family:Georgia,"Noto Serif SC",serif;font-size:12px;line-height:1.55;margin:12px 2px;color:#574e44}
+    .timeline{position:relative;padding-left:43px}.timeline:before{content:"";position:absolute;left:25px;top:6px;bottom:3px;width:1px;background:var(--line)}.event{position:relative;margin:0 0 10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 10px 9px}.event:before{content:"";position:absolute;left:-23px;top:14px;width:8px;height:8px;background:var(--surface);border:2px solid var(--accent);border-radius:50%}.event .time{position:absolute;left:-66px;top:12px;width:36px;text-align:right;font-size:7px;color:var(--sub)}.event b{font-size:10px;display:block;margin-bottom:3px}.event p{font-size:8px;color:var(--sub);line-height:1.4;margin:0}.event .source{display:inline-block;font-size:7px;color:#7b6e60;background:#f3e8d9;padding:3px 5px;border-radius:5px;margin-top:6px}
+    .unknown{font-size:8px;color:var(--sub);padding:3px 0 11px 43px;font-style:italic}.a .weekly-letter{padding:16px 15px;background:#fffaf2;border:1px solid #e6d7c3;border-radius:4px 16px 16px 16px;box-shadow:0 9px 18px rgba(79,61,40,.06)}.letter-date{font-size:8px;letter-spacing:.1em;color:#9a6b5d;text-transform:uppercase}.letter-title{font-size:19px;margin:7px 0 9px}.weekly-letter p{font-family:Georgia,"Noto Serif SC",serif;font-size:10px;line-height:1.65;color:#5e5248;margin:0}.focus-bars{display:grid;gap:7px;margin-top:13px}.focus-line{display:grid;grid-template-columns:52px 1fr 34px;gap:7px;align-items:center;font-size:8px}.bar{height:6px;border-radius:10px;background:#f0e2d1;overflow:hidden}.bar i{display:block;height:100%;background:#b55243;border-radius:10px}.experiment{margin-top:12px;border-left:3px solid #7d8e6d;background:#eef0e5;padding:10px 11px;border-radius:0 10px 10px 0}.experiment small{font-size:7px;color:#69765c;text-transform:uppercase;font-weight:900}.experiment p{font-size:9px;line-height:1.45;margin:4px 0 0}.a .family-card{padding:17px 15px;background:#fffaf2;border:1px solid #e6d7c3;border-radius:5px 18px 18px 18px}.from{display:flex;align-items:center;gap:9px;margin-bottom:14px}.from .avatar{background:#d8dfcb}.from b{font-family:Georgia,"Noto Serif SC",serif;font-size:13px}.from small{display:block;font-size:8px;color:var(--sub);margin-top:2px}.letter-block{border-top:1px solid #eadfce;padding:10px 0}.letter-block small{font-size:7px;color:#a07162;font-weight:900;letter-spacing:.08em}.letter-block p{font-family:Georgia,"Noto Serif SC",serif;font-size:10px;line-height:1.55;margin:5px 0 0}.help{background:#f3e5d4;padding:10px;border-radius:10px;margin-top:4px}
+    .b{--surface:#0d1413;--text:#edf5f0;--sub:#8c9b95;--card:#131e1c;--line:#293632;--accent:#73a9ff;--onAccent:#07111d;--soft:#172d39;--nav:rgba(19,30,28,.96);--radius:8px;--buttonShadow:0 0 0 1px rgba(115,169,255,.35),0 10px 24px rgba(31,91,180,.16)}
+    .b .phone{border-color:#050807;box-shadow:0 27px 55px rgba(10,18,16,.35)}.b .phone:before{background:#050807}.b .app{background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:24px 24px}.b .app-title h3,.b .screen-title{font-weight:720}.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:12px 0}.metric{padding:10px 8px;background:var(--card);border:1px solid var(--line);border-radius:7px}.metric strong{display:block;font-family:"SFMono-Regular",Consolas,monospace;font-size:14px;letter-spacing:-.05em}.metric span{font-size:7px;color:var(--sub)}
+    .blocks{display:grid;grid-template-columns:39px 1fr;gap:0;margin-top:7px}.hours{font-family:"SFMono-Regular",Consolas,monospace;font-size:7px;color:var(--sub);padding-top:2px;display:grid;grid-template-rows:repeat(5,46px)}.time-grid{position:relative;background-image:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% 46px;height:218px}.time-block{position:absolute;left:5px;right:20px;border-left:3px solid var(--accent);background:#162d3c;padding:7px 8px;border-radius:2px 7px 7px 2px}.time-block.green{border-color:#c7f36b;background:#25331d}.time-block i{font-style:normal;font-size:8px;font-weight:900}.time-block small{display:block;font-size:7px;color:#a8b8b2;margin-top:2px}.record-dot{position:absolute;right:5px;width:8px;height:8px;border-radius:50%;background:#c7f36b;box-shadow:0 0 0 4px rgba(199,243,107,.11)}
+    .compass-card{display:grid;grid-template-columns:114px 1fr;align-items:center;gap:13px;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:8px}.ring{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#c7f36b 0 38%,#73a9ff 38% 68%,#27332f 68% 100%);position:relative}.ring:before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--card)}.ring div{position:relative;text-align:center}.ring strong{font-family:"SFMono-Regular",Consolas,monospace;font-size:19px}.ring small{display:block;color:var(--sub);font-size:6px}.compass-copy small{color:#c7f36b;font-size:7px;font-weight:900;letter-spacing:.08em}.compass-copy h4{font-size:13px;line-height:1.25;margin:6px 0}.compass-copy p{font-size:8px;line-height:1.5;color:var(--sub);margin:0}.evidence-list{display:grid;gap:6px}.evidence{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;background:var(--card);border:1px solid var(--line);border-radius:6px}.evidence b{font-size:8px}.evidence span{font-family:"SFMono-Regular",Consolas,monospace;font-size:8px;color:#c7f36b}.next-test{padding:11px;border:1px solid #40522a;background:#1c2817;border-radius:7px}.next-test small{color:#c7f36b;font-size:7px;font-weight:900}.next-test p{font-size:9px;line-height:1.45;margin:5px 0 0}.signal-card{position:relative;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}.signal-card:before{content:"FAMILY SIGNAL";position:absolute;right:-29px;top:29px;transform:rotate(90deg);font:700 6px "SFMono-Regular",monospace;color:#53605b;letter-spacing:.13em}.signal-top{display:flex;align-items:center;gap:9px;margin-bottom:13px}.signal-top .avatar{border-radius:7px;background:#1f2e2a}.signal-top b{font-size:11px}.signal-top small{display:block;font-size:7px;color:var(--sub);margin-top:2px}.signal-row{padding:10px 14px 10px 0;border-top:1px solid var(--line)}.signal-row small{font:700 7px "SFMono-Regular",monospace;color:#73a9ff}.signal-row p{font-size:9px;line-height:1.45;margin:4px 0 0}.signal-row.need p{color:#dff6b4}.b .small-btn{border-radius:5px}.b .privacy{font-family:"SFMono-Regular",monospace}
+    .c{--surface:#edf4f0;--text:#173b34;--sub:#6d837d;--card:#fffdf8;--line:#cfded8;--accent:#1a7b6a;--onAccent:#f5fff9;--soft:#d8ebe4;--nav:rgba(255,253,248,.94);--radius:18px;--buttonShadow:0 11px 23px rgba(26,123,106,.20)}
+    .c .phone{font-family:"Avenir Next","Noto Sans SC",sans-serif}.c .phone:after{content:"";position:absolute;width:240px;height:240px;border-radius:48% 52% 64% 36%;background:rgba(74,154,137,.08);right:-130px;top:100px;transform:rotate(28deg);pointer-events:none}.c .app-title h3,.c .screen-title,.c .story-title{font-family:Georgia,"Noto Serif SC",serif;font-weight:500}.c .capture{border-radius:25px 25px 9px 25px}.c .day-note{font-family:Georgia,"Noto Serif SC",serif;font-size:11px;line-height:1.55;color:#4c6962;margin:12px 2px}
+    .river{position:relative;margin:7px 0 0;padding:2px 0 0}.river:before{content:"";position:absolute;left:50%;top:4px;bottom:4px;width:55px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(44,137,119,.11),transparent);border-radius:48%}.river-event{position:relative;width:72%;padding:10px 11px;background:var(--card);border:1px solid var(--line);border-radius:15px 15px 5px 15px;margin-bottom:10px;box-shadow:0 6px 14px rgba(24,70,60,.05)}.river-event:nth-child(even){margin-left:auto;border-radius:15px 15px 15px 5px}.river-event:after{content:"";position:absolute;right:-21px;top:50%;width:10px;height:10px;border-radius:50%;background:#d47a5f;border:3px solid var(--surface)}.river-event:nth-child(even):after{right:auto;left:-21px;background:#1a7b6a}.river-event small{font-size:7px;color:#a0614f}.river-event b{display:block;font-family:Georgia,"Noto Serif SC",serif;font-size:10px;margin:3px 0}.river-event p{font-size:7px;color:var(--sub);line-height:1.45;margin:0}.river-gap{text-align:center;font-size:7px;color:var(--sub);margin:-2px 0 8px}
+    .story-card{background:var(--card);border:1px solid var(--line);padding:16px;border-radius:7px 21px 21px 21px;position:relative;overflow:hidden}.story-card:after{content:"";position:absolute;width:120px;height:120px;border:18px solid rgba(26,123,106,.06);border-radius:50%;right:-60px;bottom:-70px}.story-kicker{font-size:7px;letter-spacing:.12em;color:#d47a5f;font-weight:900}.story-title{font-size:19px;line-height:1.2;margin:7px 0 10px}.story-card p{font-family:Georgia,"Noto Serif SC",serif;font-size:9px;line-height:1.65;color:#4e6b64;margin:0}.stones{display:flex;gap:6px;margin-top:13px}.stone{flex:1;padding:9px 7px;background:#e3efe9;border-radius:12px 12px 5px 12px}.stone:nth-child(2){background:#f4e8de}.stone small{display:block;font-size:6px;color:var(--sub)}.stone b{font-size:9px}.c .experiment{border-left-color:#d47a5f;background:#f5e8df}.postcard{background:var(--card);border:1px solid var(--line);padding:17px 15px;border-radius:8px 23px 23px 23px;box-shadow:0 10px 22px rgba(24,70,60,.07);position:relative;overflow:hidden}.postcard:after{content:"i";position:absolute;right:13px;top:12px;width:28px;height:34px;border:1px dashed #9bbcb3;color:#1a7b6a;display:grid;place-items:center;font:italic 22px Georgia}.postcard .from{padding-right:42px}.postcard .from .avatar{background:#dce9d7}.postcard .letter-block{border-color:#dae6e0}.postcard .letter-block small{color:#d47a5f}.postcard .help{background:#e3efe9}.c .small-btn{border-radius:15px 15px 5px 15px}
+    .screen-note{display:none;margin-top:16px;padding:12px 2px 0;border-top:1px solid #e4e0d7;font-size:11px;line-height:1.55;color:#777168}.screen-note.active{display:block}.screen-note b{color:#2b2924}.matrix{margin-top:35px;border-top:1px solid #d5d1c8;padding-top:28px}.matrix h3{font-size:24px;margin:0 0 16px}.matrix-grid{display:grid;grid-template-columns:170px repeat(3,1fr);border:1px solid #d7d3cb;border-radius:16px;overflow:hidden}.matrix-grid div{padding:13px 15px;border-right:1px solid #ddd9d1;border-bottom:1px solid #ddd9d1;font-size:12px;line-height:1.5;background:#f7f6f2}.matrix-grid div:nth-child(4n){border-right:0}.matrix-grid div:nth-last-child(-n+4){border-bottom:0}.matrix-grid .head{font-weight:900;background:#eae8e2}.matrix-grid .row{color:#706b63;font-weight:800}.recommend{margin-top:22px;padding:22px 24px;background:#1d211e;color:#f5f2ea;border-radius:18px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.recommend b{display:block;font-family:Georgia,"Noto Serif SC",serif;font-size:23px;margin-bottom:5px}.recommend p{font-size:13px;line-height:1.55;color:#b9bcb6;margin:0}.recommend span{font-size:11px;padding:8px 11px;border-radius:999px;background:#f3dd72;color:#242313;font-weight:900}
+    @media(max-width:1050px){.directions{grid-template-columns:1fr}.direction{display:grid;grid-template-columns:minmax(220px,.62fr) minmax(320px,1fr);gap:24px;align-items:center}.direction-head{min-height:0}.phone{max-width:390px}.screen-note{grid-column:1}.hero{grid-template-columns:1fr}.brief{max-width:600px}.matrix{overflow-x:auto}.matrix-grid{min-width:850px}}
+    @media(max-width:650px){.board{padding:30px 14px 55px}.hero{gap:20px}h1{font-size:44px}.toolbar{align-items:flex-start;flex-direction:column}.tabs{width:100%}.tab{flex:1;padding:9px 7px}.directions{gap:16px}.direction{display:block;padding:18px 12px}.direction-head{padding:4px 5px 16px}.phone{max-width:390px}.recommend{grid-template-columns:1fr}.matrix-grid{min-width:760px}}
+  </style>
+</head>
+<body>
+  <main class="board">
+    <section class="hero">
+      <div>
+        <div class="kicker">ilink · App direction board · v0.1</div>
+        <h1>同一个产品，<br>三种性格。</h1>
+        <p>对比的不是颜色，而是 ilink 应该先让人感受到什么：被温柔理解、获得清晰方向，还是看见生活自然流动。切换页面，观察三套方向如何处理同一组核心任务。</p>
+      </div>
+      <div class="brief"><strong>体验基线</strong>私人记录默认不分享；AI 只依据用户主动留下的内容；空白是“未记录”；父母和成年子女只能收到彼此批准的近况卡。</div>
+    </section>
+
+    <div class="toolbar">
+      <div class="toolbar-copy"><b>选择同一页面比较</b> · 三套方向会一起切换</div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-target="today">今天时间线</button>
+        <button class="tab" data-target="week">本周回顾</button>
+        <button class="tab" data-target="family">亲子近况</button>
+      </div>
+    </div>
+
+    <section class="directions">
+      <article class="direction a">
+        <header class="direction-head"><div class="dir-label">Direction A · Recommended</div><h2>Sunday Letter / 周日来信</h2><p>先建立信任和亲密感，再呈现数据。像被整理过的生活手账，不像绩效系统。</p><div class="tags"><span>温暖可信</span><span>父母友好</span><span>轻日记感</span></div></header>
+        <div class="phone">
+          <div class="status"><span>9:41</span><span class="signal">● ▰ ᴡɪ</span></div>
+          <div class="app">
+            <section class="screen active" data-screen="today">
+              <div class="app-title"><div><small>7 月 18 日 · 周六</small><h3>下午好，Yuki</h3></div><div class="avatar">YK</div></div>
+              <button class="capture"><span class="capture-icon">●</span><span><b>按住，说说刚刚发生的事</b><small>不按不录音 · 默认仅自己可见</small></span></button>
+              <p class="day-note">你今天留下了 3 个生活片段。时间线不完整，也没有关系。</p>
+              <div class="section-row"><b>今天的记录</b><span>共 2 小时 20 分</span></div>
+              <div class="timeline">
+                <div class="event"><span class="time">09:20</span><b>读 Agent 评测文章</b><p>记下了三个产品想法</p><span class="source">估计 · 40 分钟</span></div>
+                <div class="event"><span class="time">11:10</span><b>和 Andy 讨论原型</b><p>决定先做软件闭环</p><span class="source">计时 · 50 分钟</span></div>
+              </div>
+              <div class="unknown">12:00–15:10 · 未记录，ilink 不会猜</div>
+              <div class="timeline"><div class="event"><span class="time">15:10</span><b>去超市买菜</b><p>顺路散步，心情轻松</p><span class="source">估计 · 50 分钟</span></div></div>
+            </section>
+            <section class="screen" data-screen="week">
+              <div class="app-title"><div><small>7 月 13–19 日</small><h3>这一周的你</h3></div><div class="avatar">YK</div></div>
+              <div class="weekly-letter"><div class="letter-date">A note from your week</div><div class="letter-title">方向是对的，节奏还可以更稳。</div><p>根据你留下的 14 条记录，你持续把时间投入 AI 产品学习和原型讨论。真正的阻碍不是努力不够，而是深度工作经常被切碎。</p><div class="focus-bars"><div class="focus-line"><span>AI 学习</span><div class="bar"><i style="width:78%"></i></div><b>5h 20m</b></div><div class="focus-line"><span>项目</span><div class="bar"><i style="width:61%"></i></div><b>4h 10m</b></div><div class="focus-line"><span>生活</span><div class="bar"><i style="width:46%"></i></div><b>3h 05m</b></div></div></div>
+              <div class="section-row"><b>下周只试一件事</b><span>可修改</span></div>
+              <div class="experiment"><small>One small experiment</small><p>安排 3 个不被打断的 45 分钟学习块，结束后用一句语音记下产出。</p></div>
+              <div class="privacy">所有判断都可以回到已确认的记录</div>
+            </section>
+            <section class="screen" data-screen="family">
+              <div class="app-title"><div><small>家人 · 1 条新近况</small><h3>妈妈想让你知道</h3></div><div class="avatar">YK</div></div>
+              <div class="family-card"><div class="from"><div class="avatar">妈</div><div><b>来自妈妈的周六来信</b><small>由她确认后分享 · 10:36</small></div></div><div class="letter-block"><small>这周发生的事</small><p>去了两次舞蹈课，还和李阿姨一起吃了午饭。</p></div><div class="letter-block"><small>想让你知道</small><p>最近精神不错，周末在整理阳台。</p></div><div class="letter-block help"><small>需要帮忙</small><p>厨房水管有点漏，周六能不能帮我看看怎么找师傅？</p></div></div>
+              <div class="action-row"><button class="small-btn primary">我周六帮你找</button><button class="small-btn">想听你多说一点</button></div><div class="privacy">你看到的是妈妈批准的卡片，不是她的私人记录</div>
+            </section>
+            <nav class="bottom-nav"><div class="nav-item active"><i></i>今天</div><div class="nav-item"><i></i>回顾</div><div class="nav-item"><i></i>家人</div><div class="nav-item"><i></i>我的</div></nav>
+          </div>
+        </div>
+        <div class="screen-note active" data-note="today"><b>设计取舍：</b>记录按钮很明确，但数据退后一步。用户先感到“这里可以诚实地记生活”。</div>
+        <div class="screen-note" data-note="week"><b>设计取舍：</b>把周回顾写成一封可信的私人信，数据用于支持结论，不主导情绪。</div>
+        <div class="screen-note" data-note="family"><b>设计取舍：</b>亲子卡像一封短笺，强调发送者的主动与接收者能采取的具体行动。</div>
+      </article>
+
+      <article class="direction b">
+        <header class="direction-head"><div class="dir-label">Direction B</div><h2>Personal Compass / 人生罗盘</h2><p>把“我是否接近目标”放在第一位。更像克制的个人操作系统与成长仪表。</p><div class="tags"><span>理性清晰</span><span>目标导向</span><span>证据优先</span></div></header>
+        <div class="phone">
+          <div class="status"><span>09:41</span><span class="signal">● ▰ ᴡɪ</span></div>
+          <div class="app">
+            <section class="screen active" data-screen="today">
+              <div class="app-title"><div><small>TODAY / JUL 18</small><h3>Life log</h3></div><div class="avatar">YK</div></div>
+              <button class="capture"><span class="capture-icon">●</span><span><b>Hold to capture</b><small>private by default · device ready</small></span></button>
+              <div class="metric-row"><div class="metric"><strong>03</strong><span>已记录事件</span></div><div class="metric"><strong>2:20</strong><span>已知时长</span></div><div class="metric"><strong>01</strong><span>目标主题</span></div></div>
+              <div class="section-row"><b>ACTIVITY MAP</b><span>来源可核验</span></div>
+              <div class="blocks"><div class="hours"><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span></div><div class="time-grid"><div class="time-block" style="top:15px;height:34px"><i>Agent 评测文章</i><small>估计 · 40m · AI 学习</small></div><div class="time-block green" style="top:96px;height:40px"><i>产品原型讨论</i><small>计时 · 50m · 项目</small></div><div class="record-dot" style="top:23px"></div><div class="record-dot" style="top:106px"></div></div></div>
+              <div class="privacy">12:00 之后尚未记录 · 不进行推断</div>
+            </section>
+            <section class="screen" data-screen="week">
+              <div class="app-title"><div><small>WEEK 29 / REVIEW</small><h3>Direction check</h3></div><div class="avatar">YK</div></div>
+              <div class="compass-card"><div class="ring"><div><strong>68%</strong><small>与 90 天方向相关</small></div></div><div class="compass-copy"><small>ON DIRECTION</small><h4>方向一致，深度不足</h4><p>你在正确主题上投入，但 7 次活动中有 5 次短于 45 分钟。</p></div></div>
+              <div class="section-row"><b>EVIDENCE</b><span>点击查看记录</span></div>
+              <div class="evidence-list"><div class="evidence"><b>AI 学习 · 4 条</b><span>5h20</span></div><div class="evidence"><b>产品项目 · 5 条</b><span>4h10</span></div><div class="evidence"><b>行业交流 · 2 条</b><span>1h30</span></div></div>
+              <div class="section-row"><b>NEXT EXPERIMENT</b><span>7 天</span></div><div class="next-test"><small>FOCUS BLOCK × 3</small><p>三个 45 分钟学习块。只记录开始、结束和一句产出，不添加更多任务。</p></div><div class="privacy">68% 只描述已记录活动，不是人生评分</div>
+            </section>
+            <section class="screen" data-screen="family">
+              <div class="app-title"><div><small>FAMILY / 1 NEW</small><h3>Shared signal</h3></div><div class="avatar">YK</div></div>
+              <div class="signal-card"><div class="signal-top"><div class="avatar">妈</div><div><b>妈妈 · 本周近况</b><small>本人确认 · 今天 10:36</small></div></div><div class="signal-row"><small>WEEK</small><p>舞蹈课 × 2；和李阿姨吃午饭；整理阳台。</p></div><div class="signal-row"><small>STATUS</small><p>最近精神不错，周末在家。</p></div><div class="signal-row need"><small>ACTION REQUEST</small><p>厨房水管漏水，希望周六帮忙找一位师傅。</p></div></div>
+              <div class="action-row"><button class="small-btn primary">接受 · 周六处理</button><button class="small-btn">发消息确认</button></div><div class="privacy">无原始录音、定位或私人时间线访问权</div>
+            </section>
+            <nav class="bottom-nav"><div class="nav-item active"><i></i>LOG</div><div class="nav-item"><i></i>REVIEW</div><div class="nav-item"><i></i>FAMILY</div><div class="nav-item"><i></i>ME</div></nav>
+          </div>
+        </div>
+        <div class="screen-note active" data-note="today"><b>设计取舍：</b>时间来源、记录总量和目标主题一眼可见，更能证明“不是普通语音日记”。</div>
+        <div class="screen-note" data-note="week"><b>设计取舍：</b>把 Coach 结论变成方向检查，但百分比需要谨慎解释，避免制造伪精确。</div>
+        <div class="screen-note" data-note="family"><b>设计取舍：</b>亲子卡被压成明确的信息与行动信号，效率高，但情感温度相对最低。</div>
+      </article>
+
+      <article class="direction c">
+        <header class="direction-head"><div class="dir-label">Direction C</div><h2>Memory River / 生活河流</h2><p>把时间记录变成一条可回看的生活叙事。强调长期记忆、生命感与分享仪式。</p><div class="tags"><span>安静流动</span><span>长期档案</span><span>品牌感强</span></div></header>
+        <div class="phone">
+          <div class="status"><span>9:41</span><span class="signal">● ▰ ᴡɪ</span></div>
+          <div class="app">
+            <section class="screen active" data-screen="today">
+              <div class="app-title"><div><small>7 月 18 日 · 夏天</small><h3>今天流过的事</h3></div><div class="avatar">YK</div></div>
+              <button class="capture"><span class="capture-icon">●</span><span><b>留下此刻</b><small>长按说话 · 只在你按下时记录</small></span></button>
+              <p class="day-note">三段生活已经被你留下。没说出口的时间，仍然属于你。</p>
+              <div class="river"><div class="river-event"><small>09:20 · 约 40 分钟</small><b>读完一篇 Agent 文章</b><p>留下三个关于产品的想法。</p></div><div class="river-event"><small>11:10 · 计时 50 分钟</small><b>原型慢慢清楚了</b><p>和 Andy 决定先验证软件。</p></div><div class="river-gap">中午之后 · 尚未记录</div><div class="river-event"><small>15:10 · 约 50 分钟</small><b>出门买菜，也散了步</b><p>天气很好，心情松了一点。</p></div></div>
+            </section>
+            <section class="screen" data-screen="week">
+              <div class="app-title"><div><small>7 月 13–19 日</small><h3>本周故事</h3></div><div class="avatar">YK</div></div>
+              <div class="story-card"><div class="story-kicker">YOUR WEEK, IN MOTION</div><div class="story-title">你没有走偏，只是在寻找稳定的节奏。</div><p>这一周，你不断回到 AI 产品这件事上。学习、讨论、做原型，已经开始连成一条线。下一步不是塞进更多任务，而是让这条线少被打断。</p><div class="stones"><div class="stone"><small>学习</small><b>5h 20m</b></div><div class="stone"><small>项目</small><b>4h 10m</b></div><div class="stone"><small>生活</small><b>3h 05m</b></div></div></div>
+              <div class="section-row"><b>带到下周的一件事</b><span>一个就好</span></div><div class="experiment"><small>Next ripple</small><p>为自己留出三个 45 分钟的安静时段。结束时，只说一句今天带走了什么。</p></div><div class="privacy">故事来自 14 条已确认记录 · 可逐条查看</div>
+            </section>
+            <section class="screen" data-screen="family">
+              <div class="app-title"><div><small>从家里寄来的生活</small><h3>妈妈的本周明信片</h3></div><div class="avatar">YK</div></div>
+              <div class="postcard"><div class="from"><div class="avatar">妈</div><div><b>这个星期挺热闹</b><small>妈妈确认后，于 10:36 分享</small></div></div><div class="letter-block"><small>生活的小事</small><p>去跳了两次舞，也和李阿姨一起吃了顿午饭。</p></div><div class="letter-block"><small>想让你放心</small><p>最近精神不错，周末打算整理阳台。</p></div><div class="letter-block help"><small>有件事想请你帮忙</small><p>厨房水管有点漏。周六有空的话，帮我看看怎么找师傅。</p></div></div>
+              <div class="action-row"><button class="small-btn primary">这件事交给我</button><button class="small-btn">周日聊聊</button></div><div class="privacy">这张卡是妈妈选择分享的生活片段</div>
+            </section>
+            <nav class="bottom-nav"><div class="nav-item active"><i></i>今天</div><div class="nav-item"><i></i>回望</div><div class="nav-item"><i></i>家人</div><div class="nav-item"><i></i>我的</div></nav>
+          </div>
+        </div>
+        <div class="screen-note active" data-note="today"><b>设计取舍：</b>时间线被处理成生活流，长期品牌感最强，但快速扫描效率弱于方向 B。</div>
+        <div class="screen-note" data-note="week"><b>设计取舍：</b>先讲这一周的故事，再给证据。用户更容易被理解，也更难一眼比较数据。</div>
+        <div class="screen-note" data-note="family"><b>设计取舍：</b>近况卡有“寄来一段生活”的仪式感，适合长期亲子关系，但不是最高效的工具感。</div>
+      </article>
+    </section>
+
+    <section class="matrix">
+      <h3>怎么选</h3>
+      <div class="matrix-grid">
+        <div class="head"></div><div class="head">A · 周日来信</div><div class="head">B · 人生罗盘</div><div class="head">C · 生活河流</div>
+        <div class="row">第一印象</div><div>这是一个可信、温暖的私人空间</div><div>这是一个严谨的个人成长系统</div><div>这是一本会流动的生活传记</div>
+        <div class="row">最强页面</div><div>亲子近况卡</div><div>本周回顾</div><div>今天时间线</div>
+        <div class="row">父母友好度</div><div>高，文案与层级自然</div><div>中，需要简化模式</div><div>高，但部分交互需要学习</div>
+        <div class="row">Hackathon 清晰度</div><div>高，故事与功能平衡</div><div>最高，价值一眼可见</div><div>中，品牌感强但需讲解</div>
+        <div class="row">主要风险</div><div>像普通语音日记</div><div>冷、伪精确、像效率工具</div><div>过度叙事、信息效率低</div>
+      </div>
+      <div class="recommend"><div><b>初步建议：以 A 为骨架。</b><p>从 B 借周回顾的数据严谨度，从 C 借亲子卡的轻仪式感。仍然只保留一个主视觉语言，避免把三套拼成一套。</p></div><span>推荐方向 A</span></div>
+    </section>
+  </main>
+  <script>
+    const tabs=[...document.querySelectorAll('.tab')];
+    tabs.forEach(tab=>tab.addEventListener('click',()=>{
+      const target=tab.dataset.target;
+      tabs.forEach(x=>x.classList.toggle('active',x===tab));
+      document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('active',x.dataset.screen===target));
+      document.querySelectorAll('.screen-note').forEach(x=>x.classList.toggle('active',x.dataset.note===target));
+      document.querySelectorAll('.bottom-nav').forEach(nav=>{
+        [...nav.children].forEach((item,i)=>item.classList.toggle('active',i===({today:0,week:1,family:2}[target])));
+      });
+    }));
+  </script>
+</body>
+</html>

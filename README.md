@@ -1,12 +1,12 @@
-# ilink
+# iLink
 
-ilink 是一个面向父母与成年子女的 AI 生活记录与分享产品原型。
+iLink 是一个面向父母与成年子女的 AI 生活记录与分享产品原型。
 
 它通过低摩擦的语音输入和智能眼镜记录生活片段，由 AI 整理成「我的一天」，再由本人确认哪些内容可以分享给家人。产品的核心不是监控，而是在隐私可控的前提下，让彼此更了解对方的日常。
 
-![ilink App prototype](ilink-app-prototype-desktop.png)
+![iLink App prototype](ilink-app-prototype-desktop.png)
 
-![ilink smart glasses loop](ilink-app-prototype-hardware-desktop.png)
+![iLink smart glasses loop](ilink-app-prototype-hardware-desktop.png)
 
 ## 核心流程
 

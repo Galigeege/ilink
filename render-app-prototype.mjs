@@ -56,7 +56,7 @@ async function verifyPage(page, label) {
 const entry = await browser.newPage({ viewport: { width: 1280, height: 800 } });
 await entry.goto(indexUrl);
 await entry.waitForURL(url);
-if (!(await entry.locator('.app.capture-mode').isVisible())) throw new Error("GitHub Pages index did not open the ilink prototype");
+if (!(await entry.locator('.app.capture-mode').isVisible())) throw new Error("GitHub Pages index did not open the iLink prototype");
 await entry.close();
 
 const desktop = await browser.newPage({ viewport: { width: 1440, height: 1050 } });

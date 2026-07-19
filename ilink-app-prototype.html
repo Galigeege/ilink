@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#FBF3E7" />
-  <title>ilink · 完整 App 原型</title>
+  <title>iLink · 完整 App 原型</title>
   <!-- FALLBACK: vendor/pretext.js missing, using CDN when available. The prototype remains functional offline. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -141,15 +141,15 @@
   </nav>
 
   <main class="stage app-story">
-    <aside class="stage-copy"><div class="eyebrow">ilink · Life Between Us</div><h1>让彼此知道，<br>生活正在怎样发生。</h1><div class="rule"></div><p>随口记录一天里的小事，晚上确认 AI 的整理，再把愿意分享的部分发给父母。不是汇报行程，而是给彼此一个真正了解和关心的入口。</p></aside>
+    <aside class="stage-copy"><div class="eyebrow">iLink · Life Between Us</div><h1>让彼此知道，<br>生活正在怎样发生。</h1><div class="rule"></div><p>随口记录一天里的小事，晚上确认 AI 的整理，再把愿意分享的部分发给父母。不是汇报行程，而是给彼此一个真正了解和关心的入口。</p></aside>
 
-    <section class="device" aria-label="ilink 手机 App 可交互原型">
+    <section class="device" aria-label="iLink 手机 App 可交互原型">
       <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
       <div class="app capture-mode">
         <div class="toast" role="status" aria-live="polite">已存入你的私人时间线</div>
 
         <section class="capture-home" aria-label="语音记录首屏">
-          <header class="capture-brand"><b>ilink</b><span><i></i>Button 已连接</span></header>
+          <header class="capture-brand"><b>iLink</b><span><i></i>Button 已连接</span></header>
           <div class="capture-center">
             <small>PRIVATE · 只属于你</small>
             <h2 data-pretext contenteditable="true">说一句，让彼此更了解。</h2>
@@ -168,11 +168,11 @@
           <header class="page-header"><div><small>个人空间 · 7 月 18 日</small><h2 id="daily-title" data-pretext contenteditable="true">我</h2></div><button class="avatar avatar-button" type="button" data-action="manage" aria-label="打开个人管理">YK</button></header>
           <div class="my-view-tabs" aria-label="我的内容"><button class="my-view-tab active" type="button" data-my-view="day">我的一天</button><button class="my-view-tab" type="button" data-my-view="shares">我的分享</button></div>
           <section class="my-day-view">
-            <p class="daily-intro">ilink 把我今天留下的内容整理成了 4 个生活片段。先确认它有没有理解对，再决定哪些值得和家人分享。</p>
+            <p class="daily-intro">iLink 把我今天留下的内容整理成了 4 个生活片段。先确认它有没有理解对，再决定哪些值得和家人分享。</p>
             <article class="daily-hero"><div class="daily-hero-head"><small>MY DAY · 7 月 18 日</small><span class="daily-status">2 / 4 已确认</span></div><h3 data-pretext contenteditable="true">今天开始把一个想法做成真正的产品，也在普通的买菜和散步里慢了下来。</h3><p>这是属于我的一天。所有内容默认私密，确认前不会用于生成家人近况卡。</p><div class="daily-progress"><i></i></div></article>
             <div class="section-title"><h3>等待我确认</h3><button type="button" data-action="confirm-day">全部确认</button></div>
             <div class="organize-list">
-              <article class="organize-card"><div class="organize-head"><span>09:20 · 来自 Button</span><b>待确认</b></div><h4>开始做 ilink 产品原型</h4><p>确定先把记录、我的一天和家庭分享做成完整闭环。</p><div class="organize-meta"><span>AI 整理 · 可修改</span><div class="organize-actions"><button type="button">编辑</button><button class="confirm-record" type="button" data-action="confirm-record">确认</button></div></div></article>
+              <article class="organize-card"><div class="organize-head"><span>09:20 · 来自 Button</span><b>待确认</b></div><h4>开始做 iLink 产品原型</h4><p>确定先把记录、我的一天和家庭分享做成完整闭环。</p><div class="organize-meta"><span>AI 整理 · 可修改</span><div class="organize-actions"><button type="button">编辑</button><button class="confirm-record" type="button" data-action="confirm-record">确认</button></div></div></article>
               <article class="organize-card"><div class="organize-head"><span>15:10 · 来自手机</span><b>待确认</b></div><h4>买菜，也散了会儿步</h4><p>天气很好，走完以后感觉比上午放松了一些。</p><div class="organize-meta"><span>AI 整理 · 可修改</span><div class="organize-actions"><button type="button">编辑</button><button class="confirm-record" type="button" data-action="confirm-record">确认</button></div></div></article>
               <article class="organize-card confirmed"><div class="organize-head"><span>11:10 · 来自 Button</span><b>已确认</b></div><h4>和 Andy 讨论产品方向</h4><p>决定硬件不在 Hackathon 演示，但保留未来接口。</p><div class="organize-meta"><span>仅自己可见</span><div class="organize-actions"><button type="button">编辑</button><button class="confirm-record" type="button" data-action="confirm-record">✓ 已确认</button></div></div></article>
               <article class="organize-card confirmed"><div class="organize-head"><span>12:05 · 来自 Button</span><b>已确认</b></div><h4>在家做了午饭</h4><p>吃完以后收拾厨房，给妈妈发了张新菜的照片。</p><div class="organize-meta"><span>仅自己可见</span><div class="organize-actions"><button type="button">编辑</button><button class="confirm-record" type="button" data-action="confirm-record">✓ 已确认</button></div></div></article>
@@ -217,7 +217,7 @@
                   <button class="attention-card" type="button" data-attention-family="father"><span class="attention-person father">爸</span><span class="attention-copy"><span class="attention-label life">保持得不错</span><b>出门散步和整理阳台更频繁</b><p>这是爸爸这个月最常分享的两个日常主题。</p><span class="attention-source">来自爸爸 · 本月 6 张近况卡</span></span><span class="attention-arrow">›</span></button>
                 </div>
               </div>
-              <p class="focus-note">没有分享不代表异常。ilink 不会根据沉默、少记录或单次情绪自动推断风险。</p>
+              <p class="focus-note">没有分享不代表异常。iLink 不会根据沉默、少记录或单次情绪自动推断风险。</p>
             </section>
 
             <section class="family-members-view" hidden>
@@ -241,10 +241,10 @@
         </section>
 
         <section class="page" data-page="me" aria-labelledby="me-title">
-          <header class="manage-back"><button class="back-btn" type="button" data-action="close-manage" aria-label="返回">‹</button><div class="detail-person"><small>个人空间</small><h2 id="me-title" data-pretext contenteditable="true">我的 ilink</h2></div><div class="avatar">YK</div></header>
+          <header class="manage-back"><button class="back-btn" type="button" data-action="close-manage" aria-label="返回">‹</button><div class="detail-person"><small>个人空间</small><h2 id="me-title" data-pretext contenteditable="true">我的 iLink</h2></div><div class="avatar">YK</div></header>
           <p class="family-intro">管理设备、家人连接和每一条生活数据的边界。</p>
           <div class="management-stack">
-            <article class="manage-card"><div class="manage-head"><span class="setting-icon"><svg><use href="#i-device"/></svg></span><span class="manage-title"><b>硬件配对管理</b><small>ilink Button 01 · 当前已连接</small></span><button class="manage-action" type="button">管理</button></div><div class="manage-row"><span class="device-dot"></span><span class="manage-row-copy"><b>Button 01</b><small>电量 82% · 刚刚同步 · 待机不录音</small></span><span class="status-pill">已连接</span></div><button class="manage-row" type="button" style="width:100%;border-width:0 0 1px;background:transparent;text-align:left"><span class="manage-row-copy"><b>＋ 配对新设备</b><small>通过蓝牙添加另一枚 ilink Button</small></span><span class="chev">›</span></button></article>
+            <article class="manage-card"><div class="manage-head"><span class="setting-icon"><svg><use href="#i-device"/></svg></span><span class="manage-title"><b>硬件配对管理</b><small>iLink Button 01 · 当前已连接</small></span><button class="manage-action" type="button">管理</button></div><div class="manage-row"><span class="device-dot"></span><span class="manage-row-copy"><b>Button 01</b><small>电量 82% · 刚刚同步 · 待机不录音</small></span><span class="status-pill">已连接</span></div><button class="manage-row" type="button" style="width:100%;border-width:0 0 1px;background:transparent;text-align:left"><span class="manage-row-copy"><b>＋ 配对新设备</b><small>通过蓝牙添加另一枚 iLink Button</small></span><span class="chev">›</span></button></article>
             <article class="manage-card"><div class="manage-head"><span class="setting-icon"><svg><use href="#i-family"/></svg></span><span class="manage-title"><b>与家人的配对管理</b><small>2 位家人 · 权限彼此独立</small></span><button class="manage-action" type="button">邀请</button></div><div class="manage-row"><span class="family-avatar" style="width:30px;height:30px;font-size:9px">妈</span><span class="manage-row-copy"><b>妈妈 · 陈丽</b><small>双方可见已批准的近况卡</small></span><span class="status-pill">已连接</span></div><div class="manage-row"><span class="family-avatar father" style="width:30px;height:30px;font-size:9px">爸</span><span class="manage-row-copy"><b>爸爸 · Yiming</b><small>双方可见已批准的近况卡</small></span><span class="status-pill">已连接</span></div></article>
             <article class="manage-card"><div class="manage-head"><span class="setting-icon"><svg><use href="#i-lock"/></svg></span><span class="manage-title"><b>隐私管理</b><small>默认私密 · 分享前逐次确认</small></span><button class="manage-action" type="button">查看</button></div><div class="manage-row"><span class="manage-row-copy"><b>原始语音</b><small>加密保存 30 天，之后自动删除</small></span><span class="status-pill private">仅自己</span></div><div class="manage-row"><span class="manage-row-copy"><b>家人近况卡</b><small>每次生成、编辑并确认后才发送</small></span><span class="status-pill private">逐次确认</span></div><div class="manage-row"><span class="manage-row-copy"><b>数据导出与彻底删除</b><small>管理时间线、录音和分享记录</small></span><span class="chev">›</span></div></article>
           </div>
@@ -264,7 +264,7 @@
           <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title"><div class="handle"></div><div class="intent-badge">识别为：<span class="intent-kind">记录生活</span></div><h3 id="sheet-title" class="intent-title">我听到的是这样</h3><div class="sheet-sub intent-sub">确认后才会进入你的私人时间线</div><div class="transcript intent-transcript" data-pretext contenteditable="true">“刚读完一篇关于 Agent 的评测文章，大概四十分钟，记下了三个产品想法。”</div><div class="parsed-grid"><div class="parsed"><small class="intent-label-1">活动</small><b class="intent-value-1">阅读 Agent 评测</b></div><div class="parsed"><small class="intent-label-2">时长</small><b class="intent-value-2">估计 · 40 分钟</b></div><div class="parsed"><small class="intent-label-3">主题</small><b class="intent-value-3">AI 学习</b></div><div class="parsed"><small class="intent-label-4">时间</small><b class="intent-value-4">刚刚 · 16:42</b></div></div><div class="sheet-actions"><button type="button" data-action="close-sheet">重新说</button><button class="save intent-primary" type="button" data-action="save-event">存入私人时间线</button></div></section>
         </div>
         <div class="sheet-backdrop share-backdrop" aria-hidden="true">
-          <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="share-sheet-title"><div class="handle"></div><h3 id="share-sheet-title">给妈妈的今日近况</h3><div class="sheet-sub">只发送你勾选并确认的内容。原始录音和未确认片段不会分享。</div><div class="share-options"><label class="share-line"><input type="checkbox" checked><span><b>今天在做什么</b><span>开始把 ilink 的想法做成产品，也和 Andy 确定了核心流程。</span></span></label><label class="share-line"><input type="checkbox" checked><span><b>一个生活小片段</b><span>下午去买菜，也散了会儿步，心情比上午放松。</span></span></label><label class="share-line"><input type="checkbox"><span><b>私密候选 · 默认不分享</b><span>今天有一小段时间很焦虑，还没有想好要不要说。</span></span></label></div><div class="share-preview"><b class="share-recipient">妈妈将看到：</b><br>“今天开始认真做一个新产品，下午也出去走了走。最近挺充实，周日晚上可以打电话。”</div><div class="sheet-actions"><button type="button" data-action="close-share">再编辑一下</button><button class="save" type="button" data-action="send-share">确认并发送</button></div></section>
+          <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="share-sheet-title"><div class="handle"></div><h3 id="share-sheet-title">给妈妈的今日近况</h3><div class="sheet-sub">只发送你勾选并确认的内容。原始录音和未确认片段不会分享。</div><div class="share-options"><label class="share-line"><input type="checkbox" checked><span><b>今天在做什么</b><span>开始把 iLink 的想法做成产品，也和 Andy 确定了核心流程。</span></span></label><label class="share-line"><input type="checkbox" checked><span><b>一个生活小片段</b><span>下午去买菜，也散了会儿步，心情比上午放松。</span></span></label><label class="share-line"><input type="checkbox"><span><b>私密候选 · 默认不分享</b><span>今天有一小段时间很焦虑，还没有想好要不要说。</span></span></label></div><div class="share-preview"><b class="share-recipient">妈妈将看到：</b><br>“今天开始认真做一个新产品，下午也出去走了走。最近挺充实，周日晚上可以打电话。”</div><div class="sheet-actions"><button type="button" data-action="close-share">再编辑一下</button><button class="save" type="button" data-action="send-share">确认并发送</button></div></section>
         </div>
       </div>
     </section>
@@ -276,7 +276,7 @@
     <div class="hardware-shell">
       <header class="hardware-header">
         <div class="hardware-title">
-          <div class="eyebrow">ilink Glasses · Ambient Capture</div>
+          <div class="eyebrow">iLink Glasses · Ambient Capture</div>
           <h1>生活发生时，<br>眼镜只留下一帧。</h1>
         </div>
         <p class="hardware-intro">不要求父母反复打开 App，也不持续录像。眼镜只在预设的生活时刻拍下一张照片，交给 AI 形成候选记录；当天由本人整理、确认，再决定是否分享。</p>
@@ -284,7 +284,7 @@
 
       <section class="hardware-hero" aria-label="智能眼镜与 App 的交互闭环">
         <figure class="glasses-panel">
-          <img class="glasses-image" src="ilink-smart-glasses.png" alt="轻便的 ilink 智能眼镜，镜框角落带摄像头与隐私指示灯" />
+          <img class="glasses-image" src="ilink-smart-glasses.png" alt="轻便的 iLink 智能眼镜，镜框角落带摄像头与隐私指示灯" />
           <div class="glasses-label camera"><i></i>单帧相机 · 瞬间触发</div>
           <div class="glasses-label privacy"><i></i>指示灯亮起 · 拍摄可感知</div>
           <button class="glasses-button" type="button" aria-label="按下眼镜上的记录按钮"></button>
@@ -312,7 +312,7 @@
         <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m3 3 18 18M10.6 10.7a2 2 0 0 0 2.8 2.8M9.5 5.2A10.8 10.8 0 0 1 12 5c5.3 0 8.5 7 8.5 7a14 14 0 0 1-2.3 3.2M6.3 6.3C4.4 7.8 3.5 9.8 3.5 12c0 0 3.2 7 8.5 7 1 0 1.8-.2 2.6-.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>原始素材默认私密</strong><br>家人只看到整理后的卡片</span></div>
         <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 12.5 10.2 16 17 8M12 2.8l7 3v5.5c0 4.4-2.8 7.5-7 9-4.2-1.5-7-4.6-7-9V5.8z" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>分享前本人确认</strong><br>AI 整理，但不替任何人公开生活</span></div>
       </section>
-      <footer class="hardware-caption"><span><strong>ilink Glasses</strong> 是记录入口；App 才是理解、确认与关系连接的中心。</span><span>Specific moments · One frame · Human approved</span></footer>
+      <footer class="hardware-caption"><span><strong>iLink Glasses</strong> 是记录入口；App 才是理解、确认与关系连接的中心。</span><span>Specific moments · One frame · Human approved</span></footer>
     </div>
   </main>
 
@@ -321,7 +321,7 @@
       '让彼此知道，':'Let each other know','生活正在怎样发生。':'how life is unfolding.','随口记录一天里的小事，晚上确认 AI 的整理，再把愿意分享的部分发给父母。不是汇报行程，而是给彼此一个真正了解和关心的入口。':'Capture small moments as they happen. Review what AI organizes, then share only what you choose with family. Not a status report, but a way to truly understand and care for each other.',
       '三个核心入口':'Three core spaces','家人':'Family','记录':'Record','我':'Me','先看家人分享给我的重点，再进入妈妈或爸爸的近况。':'See what matters in family updates, then open Mom or Dad’s shared moments.','随口留下真实生活，也可以直接发出家人相关指令。':'Speak naturally to record life or ask the agent about family.','整理我的一天，也能回看我主动分享给家人的内容。':'Organize My Day and revisit what I chose to share.','完整闭环':'Complete loop','记录一句生活，在「我的一天」确认，再生成一张只有家人可见的近况卡。':'Record a moment, confirm it in My Day, then create a private family update card.',
       'Button 已连接':'Button connected','PRIVATE · 只属于你':'PRIVATE · ONLY YOU','说一句，让彼此更了解。':'Say it once. Stay close.','先记录自己的生活。每天由你确认整理结果，再决定哪些部分可以让家人看到。':'Record your life first. Review the daily summary, then choose what family can see.','“记录我今天开始做新项目”':'“Record that I started a new project”','“把我的一天整理成近况给妈妈”':'“Turn My Day into an update for Mom”','“看看爸爸最近怎么样”':'“Show me how Dad has been lately”','查看我的一天':'View My Day','按住说话':'Hold to speak','松开结束':'Release to finish','上滑取消':'Slide up to cancel','正在听 · 00:00':'Listening · 00:00',
-      '个人空间 · 7 月 18 日':'PRIVATE SPACE · JUL 18','我的一天':'My Day','我的分享':'My Shares','等待我确认':'Waiting for me','全部确认':'Confirm all','待确认':'To review','已确认':'Confirmed','编辑':'Edit','确认':'Confirm','继续记录':'Keep recording','生成家人近况卡':'Create family card','近期关注':'What matters','家人列表':'Family members','最近一周':'Past week','最近一月':'Past month','只整理家人主动分享的内容':'Only summarizes what family chose to share','值得你关注':'Worth your attention','我们的生活':'Our lives','管理':'Manage','我的 ilink':'My ilink','硬件配对管理':'Hardware pairing','与家人的配对管理':'Family pairing','隐私管理':'Privacy','查看':'View','邀请':'Invite','已连接':'Connected','逐次确认':'Confirm each time','仅自己':'Only me',
+      '个人空间 · 7 月 18 日':'PRIVATE SPACE · JUL 18','我的一天':'My Day','我的分享':'My Shares','等待我确认':'Waiting for me','全部确认':'Confirm all','待确认':'To review','已确认':'Confirmed','编辑':'Edit','确认':'Confirm','继续记录':'Keep recording','生成家人近况卡':'Create family card','近期关注':'What matters','家人列表':'Family members','最近一周':'Past week','最近一月':'Past month','只整理家人主动分享的内容':'Only summarizes what family chose to share','值得你关注':'Worth your attention','我们的生活':'Our lives','管理':'Manage','我的 iLink':'My iLink','硬件配对管理':'Hardware pairing','与家人的配对管理':'Family pairing','隐私管理':'Privacy','查看':'View','邀请':'Invite','已连接':'Connected','逐次确认':'Confirm each time','仅自己':'Only me',
       '生活发生时，':'As life happens,','眼镜只留下一帧。':'the glasses keep one frame.','不要求父母反复打开 App，也不持续录像。眼镜只在预设的生活时刻拍下一张照片，交给 AI 形成候选记录；当天由本人整理、确认，再决定是否分享。':'No repeated app check-ins and no continuous video. At selected moments, the glasses take one photo for AI to turn into a suggested memory. The wearer reviews it later and decides what to share.','单帧相机 · 瞬间触发':'One-frame camera · moment trigger','指示灯亮起 · 拍摄可感知':'Privacy light · visible capture','按一下记录':'Press to capture','一帧，变成一件值得知道的事':'One frame becomes something worth knowing','眼镜已连接':'Glasses connected','特定时刻触发':'A moment triggers capture','出门、到访、开始一项活动等预设情境':'Leaving home, arriving somewhere, or starting an activity','眼镜端':'On glasses','拍下一张照片':'Take one photo','只保留当下的一帧，并附带时间与触发原因':'Keep one frame with its time and trigger context','单帧输入':'One-frame input','安全同步到 App':'Securely sync to the app','照片加密传入私人收件箱，原图默认不对家人开放':'The photo enters a private encrypted inbox; family cannot see the original','蓝牙 / Wi-Fi':'Bluetooth / Wi-Fi','AI 整理「我的一天」':'AI organizes My Day','识别人物、地点与事件，生成可修改的生活片段':'Recognize people, places, and events to draft an editable moment','候选记录':'Suggested memory','本人确认，再分享':'Review first, then share','选择要让孩子知道的内容，生成一张家人近况卡':'Choose what your child should know and create a family update card','不是 24 小时记录':'Not 24/7 recording','只有预设时刻的一张照片':'One photo only at selected moments','原始素材默认私密':'Originals stay private','家人只看到整理后的卡片':'Family sees only the finished card','分享前本人确认':'The wearer approves sharing','AI 整理，但不替任何人公开生活':'AI organizes. It never publishes someone’s life.','是记录入口；App 才是理解、确认与关系连接的中心。':' is the capture point. The app is where moments are understood, approved, and shared.',
       '已捕捉 1 帧':'1 frame captured','中文':'中文','语音记录首屏':'Voice capture home','主导航':'Main navigation','语音记录':'Voice recording','智能眼镜与 App 的交互闭环':'Smart glasses and app interaction loop','眼镜到家人分享的五步流程':'Five steps from glasses to family','隐私原则':'Privacy principles','按下眼镜上的记录按钮':'Press the capture button on the glasses'
     };
@@ -334,7 +334,7 @@
       nodes.forEach(node=>{const value=node.nodeValue||'';const core=value.trim();if(!core)return;const next=(currentLanguage==='en'?zhToEn[core]:enToZh[core]);if(next)node.nodeValue=value.replace(core,next)});
     }
     function setLanguage(language){
-      currentLanguage=language==='en'?'en':'zh';languagePass=true;document.documentElement.lang=currentLanguage==='en'?'en':'zh-CN';document.title=currentLanguage==='en'?'ilink · Interactive App Prototype':'ilink · 完整 App 原型';
+      currentLanguage=language==='en'?'en':'zh';languagePass=true;document.documentElement.lang=currentLanguage==='en'?'en':'zh-CN';document.title=currentLanguage==='en'?'iLink · Interactive App Prototype':'iLink · 完整 App 原型';
       languageButtons.forEach(button=>{const active=button.dataset.lang===currentLanguage;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});translateText();
       const glassesButton=document.querySelector('.glasses-button');glassesButton.setAttribute('aria-label',currentLanguage==='en'?'Press the capture button on the glasses':'按下眼镜上的记录按钮');languagePass=false;
     }
@@ -365,7 +365,7 @@
     let recording=false,timer=null,startedAt=0,processing=false,currentFamily='mother',pendingVoiceIntent='record',lastCorePage='daily',currentFamilyLanding='focus',currentMyView='day';
 
     const voiceIntents={
-      record:{kind:'记录生活',title:'我听到的是这样',sub:'保存后会进入「我的一天」，仍需由你确认',transcript:'“今天开始做 ilink 产品原型，想先把记录、我的一天和家人分享做通。”',fields:[['发生了什么','开始做 ilink 原型'],['人物','我、Andy'],['可分享程度','默认仅自己'],['时间','刚刚 · 16:42']],primary:'加入我的一天'},
+      record:{kind:'记录生活',title:'我听到的是这样',sub:'保存后会进入「我的一天」，仍需由你确认',transcript:'“今天开始做 iLink 产品原型，想先把记录、我的一天和家人分享做通。”',fields:[['发生了什么','开始做 iLink 原型'],['人物','我、Andy'],['可分享程度','默认仅自己'],['时间','刚刚 · 16:42']],primary:'加入我的一天'},
       share:{kind:'生成分享卡',title:'准备生成一张今日近况',sub:'Agent 只使用你已经确认的生活片段；发送前仍由你编辑',transcript:'“把我今天的生活整理成一张近况卡给妈妈。”',fields:[['分享给','妈妈 · 陈丽'],['时间范围','今天'],['内容来源','4 条生活片段'],['隐私方式','编辑后再发送']],primary:'继续编辑分享卡'},
       family:{kind:'查看家人信息',title:'准备打开爸爸的近况',sub:'你只能看到爸爸主动批准并分享给你的内容',transcript:'“我想看看爸爸最近怎么样。”',fields:[['家人','爸爸 · Yiming'],['最近分享','昨天 19:20'],['可见内容','2 张近况卡'],['权限','仅对方已批准']],primary:'查看爸爸的近况'}
     };

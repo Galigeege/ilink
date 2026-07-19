@@ -9,6 +9,7 @@ const browser = await chromium.launch({
   executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
 });
 const url = pathToFileURL(resolve("ilink-app-prototype.html")).href;
+const indexUrl = pathToFileURL(resolve("index.html")).href;
 
 async function verifyPage(page, label) {
   const errors = [];
@@ -51,6 +52,12 @@ async function verifyPage(page, label) {
   if (await page.locator(".app.capture-mode").count() !== 1 || !(await page.locator(".record-dock").isVisible())) throw new Error(`${label}: capture tab did not reopen voice input`);
   return {...metrics,...captureMetrics};
 }
+
+const entry = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+await entry.goto(indexUrl);
+await entry.waitForURL(url);
+if (!(await entry.locator('.app.capture-mode').isVisible())) throw new Error("GitHub Pages index did not open the ilink prototype");
+await entry.close();
 
 const desktop = await browser.newPage({ viewport: { width: 1440, height: 1050 } });
 console.log("desktop", await verifyPage(desktop, "desktop"));

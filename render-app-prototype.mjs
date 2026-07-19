@@ -77,7 +77,8 @@ if (!(await desktop.locator('.hardware-story').isVisible())) throw new Error("ha
 if (await desktop.locator('.hardware-step').count() !== 5) throw new Error("hardware interaction flow must contain five steps");
 if (await desktop.getByText('不拍视频，不保存全天轨迹；').count() !== 0) throw new Error("deleted capture-contract copy is still present");
 if (!(await desktop.locator('.glasses-button').isVisible()) || !(await desktop.locator('.tap-gesture').isVisible())) throw new Error("glasses capture button or tap gesture is missing");
-if ((await desktop.locator('.contact-link').getAttribute('href')) !== 'mailto:founder@weiproduct.com') throw new Error("contact email link is missing or invalid");
+if ((await desktop.locator('.site-contact').getAttribute('href')) !== 'mailto:founder@weiproduct.com') throw new Error("contact email link is missing or invalid");
+if ((await desktop.locator('.site-contact').boundingBox()).y > 120) throw new Error("contact email is not in a prominent position");
 await desktop.locator('.glasses-button').click();
 if ((await desktop.locator('.loop-status-copy').textContent()) !== '已捕捉 1 帧') throw new Error("glasses capture interaction did not update status");
 const hardwareMetrics = await desktop.evaluate(() => ({
